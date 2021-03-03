@@ -13,6 +13,7 @@ create table PESSOAJURIDICA(
 	idpessoajuridica serial not null,
 	cnpjpessoajuridica varchar(14),
 	iepessoajuridica varchar(10),
+        tipopessoajuridica varchar(10),
 	idpessoa integer,
 	constraint pk_pessoajuridica primary key(idpessoajuridica),
 	constraint fk_pj_pessoa foreign key(idpessoa) references pessoa(idpessoa)
