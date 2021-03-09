@@ -1,6 +1,7 @@
 package br.com.projetoempresa.controller;
 
 import br.com.projetoempresa.dao.GenericDAO;
+import br.com.projetoempresa.dao.PessoaJuridicaDAO;
 import br.com.projetoempresa.model.PessoaJuridica;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,22 +51,22 @@ public class CadastrarPessoaJuridica extends HttpServlet {
             pessoaJuridica.setTipoPessoaJuridica(tipoPessoaJuridica);
             
             //Cadastrar uma PessoaJuridica na DAO
-//            try {
-//                GenericDAO pessoaJuridicaDAO = new PessoaJuridicaDAO();
-//                if (pessoaJuridicaDAO.cadastrar(pessoaJuridica)) {
-//                    //Se o cadastro for um sucesso, ele retornar TRUE
-//                    msg = "Usuário cadastrado com sucesso!";
-//                } else {
-//                    //Senao retorna FALS
-//                    msg = "Problemas ao cadastrar Usuário. "
-//                            + "Verifique os dados informados e tente novamente!";
-//                }
-//                request.setAttribute("mensagem", msg);
-//                request.getRequestDispatcher("cadastrar-pessoajuridica.jsp").forward(request, response);
-//            } catch (Exception ex) {
-//                System.out.println("Problemas no Servlet ao cadastrar PessoaJurídica! Erro: " + ex.getMessage());
-//                ex.printStackTrace();
-//            }
+            try {
+                GenericDAO pessoaJuridicaDAO = new PessoaJuridicaDAO();
+                if (pessoaJuridicaDAO.cadastrar(pessoaJuridica)) {
+                    //Se o cadastro for um sucesso, ele retornar TRUE
+                    msg = "Usuário cadastrado com sucesso!";
+                } else {
+                    //Senao retorna FALSE
+                    msg = "Problemas ao cadastrar Usuário. "
+                            + "Verifique os dados informados e tente novamente!";
+                }
+                request.setAttribute("mensagem", msg);
+                request.getRequestDispatcher("cadastrar-pessoajuridica.jsp").forward(request, response);
+            } catch (Exception ex) {
+                System.out.println("Problemas no Servlet ao cadastrar PessoaJurídica! Erro: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
     }
 
